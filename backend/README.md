@@ -1,0 +1,1 @@
+To Create Backend I will use the express JS for creating the API and also I will use JSON B Token for user Authentication System and I will manage these things in database and for that I will use the MongoDB ATLAS Database and to store the images I will use Molter.
