@@ -8,6 +8,7 @@ const multer = require('multer'); // Import Multer for handling file uploads
 const path = require('path'); // Import Path module for working with file and directory paths (// Import Path for handling file paths)
 const cors = require('cors'); // Import CORS for enabling cross-origin requests
 const { type } = require('os');
+const { lookupService } = require('dns');
 
 // Middleware configuration
 app.use(express.json()); // Parse incoming JSON requests
@@ -88,17 +89,29 @@ const Product = mongoose.model("Product",{
 
 // Fixed endpoint for adding product
 app.post('/addproduct', async (req, res) => {
+    let products = await Product.find({});
+    let id;
+    if(products.length>0)
+    {
+        let last_product_array = products.slice(-1);
+        let last_product = last_product_array[0];
+        id = last_product.id+1;
+    }
+    else{
+        id = 1;
+    }
     try {
         const product = new Product({
-            id: req.body.id,
+            id: id,
             name: req.body.name,
             image: req.body.image,
             category: req.body.category,
             new_price: req.body.new_price,
             old_price: req.body.old_price,
         });
-        
+        console.log(product);
         await product.save();
+        console.log("Saved")
         res.json({
             success: true,
             name: req.body.name,
@@ -111,6 +124,25 @@ app.post('/addproduct', async (req, res) => {
         });
     }
 });
+
+// Creating API For deleting Products
+app.post('/removeproduct',async(req,res)=>{
+    await Product.findOneAndDelete({id:req.body.id});
+    console.log("Removed");
+    res.json({
+        success:true,
+        name:req.body.name
+    })
+})
+
+//Creating API for getting all products
+app.get('/allproducts', async (req,res)=>{
+    let products = await Product.find({
+
+    });
+    console.log("All Products Fetched");
+    res.send(products);
+})
 
 // Start the server and listen on the specified port
 app.listen(port, (error) => {
