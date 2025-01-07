@@ -84,6 +84,15 @@ We use **Postman** to test and debug API endpoints in this project. Postman is a
     2. Provide a JSON object with the required fields (e.g., `id`, `name`, `image`, etc.).
     3. Submit the request and confirm the success response.
 
+## API Features
+
+### 1. Upload Image
+This screenshot shows the image upload process using Postman:
+
+![Upload Image Screenshot](./Screenshot_Readme/ Screenshot 2024-12-28 at 20.56.54.png)
+
+*Figure 1: Uploading a product image via the API.*
+
 #### Why It’s Essential:
 Postman ensures that your API is functional, reliable, and meets its intended purpose. By testing endpoints thoroughly, you can catch and fix issues early in the development process.
 
