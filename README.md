@@ -1,5 +1,47 @@
 ## ALX_E-commerce_Full_stack
 
+
+
+## Backend Features for E-Shopper API
+
+This backend application is designed for an e-commerce platform, **E-Shopper**, built with Node.js, Express, and MongoDB. Below is an overview of the key features and functionality:
+
+### 1. **Express API**
+- The backend uses the **Express** framework to create a RESTful API.
+- A root endpoint (`GET /`) confirms that the API is running by returning a success message.
+
+### 2. **Database Connection**
+- **MongoDB** is used as the database, and it is connected using **Mongoose**, an Object Data Modeling (ODM) library for Node.js.
+- A secure connection is established with MongoDB Atlas to handle data storage.
+
+### 3. **File Upload with Multer**
+- The API supports image uploads using the **Multer** middleware.
+- Uploaded files are stored in the `./upload/images` directory.
+- File naming is automated using a timestamp to ensure uniqueness (e.g., `product_1678901234567.jpg`).
+- Static file hosting allows accessing uploaded images via URLs, such as `http://localhost:4000/images/{filename}`.
+
+### 4. **Product Schema and Database Operations**
+- A **Mongoose Schema** defines the structure of the `Product` collection in MongoDB:
+  - **Fields**: `id`, `name`, `image`, `category`, `new_price`, `old_price`, `date`, and `available`.
+  - Validation and defaults ensure data integrity (e.g., unique IDs, required fields, and default values).
+- **Add Product Endpoint**:
+  - `POST /addproduct`: Adds new products to the database.
+  - Validates incoming data and saves it to the `Product` collection.
+  - Returns a success response with the product name or an error message if the operation fails.
+
+### 5. **Image Upload Endpoint**
+- `POST /upload`: Accepts image uploads with the field name `product`.
+- Responds with:
+  ```json
+  {
+    "success": 1,
+    "image_url": "http://localhost:4000/images/product_1736270055429.png"
+  }
+
+
+
+--------------------------------------------------------------------------------------------------------------------------------------
+
 ### I used Postman to Upload Product to my DATABASE
 
 ### API Testing with Postman
