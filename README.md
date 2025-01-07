@@ -89,7 +89,7 @@ We use **Postman** to test and debug API endpoints in this project. Postman is a
 ### 1. Upload Image
 This screenshot shows the image upload process using Postman:
 
-![Upload Image Screenshot](./Screenshot_Readme/ Screenshot 2024-12-28 at 20.56.54.png)
+![Upload Image Screenshot](./Screenshot_Readme/Screenshot_Readme/2024-12-28%20at%2020.56.54.png)
 
 *Figure 1: Uploading a product image via the API.*
 
