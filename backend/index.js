@@ -14,39 +14,39 @@ app.use(express.json()); // Parse incoming JSON requests
 app.use(cors()); // Enable CORS for all routes (to allow requests from different origins)
 
 // Connect to MongoDB database using Mongoose
-mongoose.connect("mongodb+srv://nabilmouhamech:rbrulekGhWvgB5en@cluster0.xzbf5.mongodb.net/e-shooper")
+mongoose.connect("mongodb+srv://nabilmouhamech:rbrulekGhWvgB5en@cluster0.xzbf5.mongodb.net/E-Shopper")
     .then(() => console.log("Connected to MongoDB")) // Log successful connection
-    .catch((error) => console.error("MongoDB connection error:", error)); // Handle connection errors
+    .catch((error) => console.error("MongoDB connection error:", error)) // Handle connection errors
 
 
 // Basic route to test if the API is running
-app.get("/", (req, res) => {
-    res.send("Express API is running"); // Respond with a message for the root route
+app.get("/", (req,res) => {
+    res.send("Express API is running") // Respond with a message for the root route
 })
 
 // Configure Multer storage engine for handling file uploads
 const storage = multer.diskStorage({
-    destination: 'upload/images', // Set the destination folder for uploaded images
+    destination: './upload/images', // Set the destination folder for uploaded images
     // Define a custom filename for uploaded files
     filename:(req, file, cb) => {
-        return cb(null, `${file.fieldname}_${Date.now()}${path.extname(file.originalname)}`);
+        return cb(null, `${file.fieldname}_${Date.now()}${path.extname(file.originalname)}`)
         // Example: "product_1678901234567.jpg"
     }
 })
 
 // Create an instance of Multer with the configured storage engine
-const upload = multer({storage: storage})
+const upload = multer({storage:storage})
 
 // Serve static files from the "upload/images" directory
-app.use('/images', express.static('upload/images'))
+app.use('/images',express.static('upload/images'))
 
 // Create an endpoint for uploading images, my field name is product
-app.post('/upload', upload.single('product'), (req, res) => {
+app.post("/upload",upload.single('product'),(req,res)=>{
     // Handle the image upload and respond with the image URL
     res.json({
         success: 1, // Indicate success
         image_url: `http://localhost:${port}/images/${req.file.filename}` // Provide the image URL
-    });
+    })
 })
 
 // Schema for Creating Products
@@ -115,10 +115,10 @@ app.post('/addproduct', async (req, res) => {
 // Start the server and listen on the specified port
 app.listen(port, (error) => {
     if (!error) {
-        console.log("Server Running on port "+port); // Log successful server start
+        console.log("Server Running on port "+port) // Log successful server start
     }
     else
     {
-        console.log("Error : "+error); // Log any errors during server startup
+        console.log("Error : "+error) // Log any errors during server startup
     }
 })
