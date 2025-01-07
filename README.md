@@ -123,4 +123,24 @@ const Product = mongoose.model("Product", {
     available: { type: Boolean, default: true },
 });
 
+# Admin Control Panel  
 
+This project is a **Control Panel** for the **ALX E-commerce Full-Stack Application**. The panel is built using **Vite**, which provides a fast and lightweight development environment for modern web applications.  
+
+## Features  
+- **Framework**: React was chosen for building dynamic and interactive components.  
+- **Variant**: JavaScript is used for simplicity and flexibility in the development process.  
+- **Scaffolding Tool**: Vite was used for its superior speed, module-based development, and Hot Module Replacement (HMR) capabilities.  
+
+## Setup  
+
+### Prerequisites  
+Ensure the following tools are installed on your system:  
+- **Node.js** (version 14 or later)  
+- **npm** (comes with Node.js)  
+
+### Installation  
+
+1. Clone the repository to your local machine:  
+   ```bash
+   git clone <repository-url>
