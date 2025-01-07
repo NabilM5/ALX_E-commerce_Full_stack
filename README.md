@@ -91,7 +91,7 @@ We use **Postman** to test and debug API endpoints in this project. Postman is a
 ### 3. **File Upload with Multer**
 Here is a screenshot of the file upload functionality:
 
-![Screenshot](./Screenshot_Readme/2024-12-28%20at%2020.56.54.png)
+![Screenshot](./Screenshot_Readme/Screenshot_Postman_extension.png)
 
 *Figure 1: Uploading a product image via the API.*
 
