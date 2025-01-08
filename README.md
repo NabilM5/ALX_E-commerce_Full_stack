@@ -144,3 +144,26 @@ Ensure the following tools are installed on your system:
 1. Clone the repository to your local machine:  
    ```bash
    git clone <repository-url>
+
+-----------------------------------------------------------------
+# Admin Control Panel for ALX E-commerce Full-Stack Application  
+
+This is the **Admin Control Panel** for the **ALX E-commerce Full-Stack Application**, designed to manage and oversee the application's functionality. It is built using **React** and **Vite** for a fast, modern, and efficient development experience.
+
+## Features  
+- **Framework**: React for dynamic and interactive UI components.  
+- **Variant**: JavaScript for flexibility and ease of integration.  
+- **Scaffolding Tool**: Vite for fast development, optimized build processes, and Hot Module Replacement (HMR).  
+
+## Setup  
+
+### Prerequisites  
+Before you begin, ensure the following tools are installed:  
+- **Node.js** (version 14 or later)  
+- **npm** (comes with Node.js)  
+
+### Installation  
+
+1. Clone this repository to your local machine:  
+   ```bash
+   git clone <repository-url>
