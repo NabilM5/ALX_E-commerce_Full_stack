@@ -123,6 +123,8 @@ const Product = mongoose.model("Product", {
     available: { type: Boolean, default: true },
 });
 
+------------------------------------------------------------------------------------------------------------------------------------
+
 # Admin Control Panel  
 
 This project is a **Control Panel** for the **ALX E-commerce Full-Stack Application**. The panel is built using **Vite**, which provides a fast and lightweight development environment for modern web applications.  
