@@ -122,7 +122,7 @@ const Product = mongoose.model("Product", {
     date: { type: Date, default: Date.now },
     available: { type: Boolean, default: true },
 });
-
+```
 ------------------------------------------------------------------------------------------------------------------------------------
 
 ### Admin Control Panel  
@@ -146,7 +146,7 @@ Ensure the following tools are installed on your system:
 1. Clone the repository to your local machine:  
    ```bash
    git clone <repository-url>
-
+	```
 -----------------------------------------------------------------
 # Admin Control Panel for ALX E-commerce Full-Stack Application  
 
@@ -169,3 +169,4 @@ Before you begin, ensure the following tools are installed:
 1. Clone this repository to your local machine:  
    ```bash
    git clone <repository-url>
+	```
