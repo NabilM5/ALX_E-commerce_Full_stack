@@ -9,6 +9,7 @@ const path = require('path'); // Import Path module for working with file and di
 const cors = require('cors'); // Import CORS for enabling cross-origin requests
 const { type } = require('os');
 const { lookupService } = require('dns');
+const { error } = require('console');
 
 // Middleware configuration
 app.use(express.json()); // Parse incoming JSON requests
@@ -142,6 +143,96 @@ app.get('/allproducts', async (req,res)=>{
     });
     console.log("All Products Fetched");
     res.send(products);
+})
+
+// Schema creating for User model
+
+const Users = mongoose.model('Users',{
+    name:{
+        type:String,
+    },
+    email:{
+        type:String,
+        unique:true,
+    },
+    password:{
+        type:String,
+    },
+    cartData:{
+        type:Object,
+    },
+    date:{
+        type:Date,
+        default:Date.now,
+    }
+})
+
+// Creating Endpoint for registering the user
+app.post('/signup', async (req, res) =>{
+    let check = await Users.findOne({email:req.body.email});
+    if(check){
+        return res.status(400).json({success:false, errors:"Existing user found with same email address"})
+    }
+    let cart ={};
+    for (let i = 0; i < 300; i++) {
+        cart[i] = 0;
+    }
+    const user = new Users({
+        name:req.body.username,
+        email:req.body.email,
+        password:req.body.password,
+        cartData:cart,
+    })
+
+    await user.save();
+
+    const data = {
+        user:{
+            id:user.id
+        }
+    }
+    
+    const token = jwt.sign(data,'secret_ecom');
+    res.json({success:true,token})
+})
+
+// creating endpoint for user login
+app.post('/login', async(req, res)=>{
+    let user = await Users.findOne({email:req.body.email});
+    if(user){
+        const passCompare = req.body.password === user.password;
+        if(passCompare){
+            const data = {
+                user:{
+                    id:user.id
+                }
+            }
+            const token = jwt.sign(data, 'secret_ecom');
+            res.json({success:true, token});
+        }
+        else{
+            res.json({success:false, errors:"Wrong Password"});
+        }
+    }
+    else{
+        res.json({success:false, errors:"User not found"});
+    }
+})
+
+// creating endpoint for user logout (newcollection data)
+app.get('/newcollection', async(req, res) => {
+    let products = await Product.find({});
+    let newCollection = products.slice(1).slice(-8);
+    console.log("NewCollection Fetched");
+    res.send(newCollection);
+})
+
+// Creating endpoint for Popular in women section
+app.get('/popularinwomen', async(req,res) =>{
+    let products = await Product.find({category:"women"});
+    let popular_in_women = products.slice(0,4);
+    console.log("Popular in Women Fetched");
+    res.send(popular_in_women);
 })
 
 // Start the server and listen on the specified port
